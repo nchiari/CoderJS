@@ -238,23 +238,24 @@
     <!-- AOS animations -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      AOS.init();
+      AOS.init()
     </script>
     <!-- Hamburger by Gaurav https://github.com/dev-ggaurav -->
     <script>
-      const hamburger = document.querySelector(".hamburger");
-      const navMenu = document.querySelector(".nav-menu");
-      hamburger.addEventListener("click", mobileMenu);
+      const hamburger = document.querySelector(".hamburger")
+      const navMenu = document.querySelector(".nav-menu")
+      hamburger.addEventListener("click", mobileMenu)
       function mobileMenu() {
-        hamburger.classList.toggle("active");
-        navMenu.classList.toggle("active");
+        hamburger.classList.toggle("active")
+        navMenu.classList.toggle("active")
       }
-      const navLink = document.querySelectorAll(".nav-link");
-      navLink.forEach((n) => n.addEventListener("click", closeMenu));
+      const navLink = document.querySelectorAll(".nav-link")
+      navLink.forEach((n) => n.addEventListener("click", closeMenu))
       function closeMenu() {
-        hamburger.classList.remove("active");
-        navMenu.classList.remove("active");
+        hamburger.classList.remove("active")
+        navMenu.classList.remove("active")
       }
     </script>
+    <script src="/js/carrito.js"></script>
   </body>
 </html>
