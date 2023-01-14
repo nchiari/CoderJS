@@ -1,0 +1,95 @@
+/* Navbar hamburger by Gaurav https://github.com/dev-ggaurav - Edited by me */
+
+.nav--index {
+  background-color: rgb(253, 246, 229);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav--pages {
+  @extend .nav--index;
+  padding: 2rem 0;
+  background-color: $color-bg;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.hamburger {
+  display: none;
+  @media (max-width: $bp-midscreen) {
+    display: block;
+    cursor: pointer;
+  }
+}
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: $color-text;
+}
+.nav-menu {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  @media (max-width: $bp-midscreen) {
+    position: absolute;
+    left: -100%;
+    top: 8rem;
+    flex-direction: column;
+    background-color: #253748;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    z-index: 2;
+    display: block;
+    gap: 0;
+  }
+  @media (max-width: $bp-bigscreen) {
+    gap: 3rem;
+  }
+}
+.nav-link {
+  color: $color-text;
+  transition: 100ms;
+  @media (hover) {
+    &:hover {
+      border-bottom: 2px solid $color-text;
+      transition: 100ms;
+    }
+  }
+  @media (max-width: $bp-midscreen) {
+    color: $color-bg;
+    @media (hover) {
+      &:hover {
+        border-bottom: none;
+      }
+    }
+  }
+}
+@media (max-width: $bp-midscreen) {
+  .nav-menu.active {
+    left: 0;
+  }
+  .nav-item {
+    margin: 2.5rem 0;
+  }
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}

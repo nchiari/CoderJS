@@ -1,0 +1,19 @@
+{
+  "name": "sud",
+  "version": "1.0.0",
+  "description": "SUD",
+  "main": "index.js",
+  "scripts": {
+    "comp:sass": "sass --watch scss/style.scss css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nchiari/sud.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nchiari/sud/issues"
+  },
+  "homepage": "https://github.com/nchiari/sud#readme"
+}

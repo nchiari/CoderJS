@@ -1,0 +1,200 @@
+// Componentes maps
+$components: (benefits, services);
+
+/* Benefits and Services cards (Index and Servicios pages) */
+@each $componente in $components {
+  .#{$componente} {
+    @include component;
+  }
+  .#{$componente}__grid {
+    display: grid;
+    grid-gap: 7rem;
+    grid-template-rows: repeat(3, auto);
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    @media (min-width: $bp-tablet) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-rows: auto;
+      grid-gap: 3rem;
+    }
+  }
+  .#{$componente}__box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .#{$componente}__img {
+    text-align: center;
+  }
+  .#{$componente}__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+/* 4 steps method list (Index and Servicios pages) */
+.method {
+  @include component;
+}
+.method__grid {
+  display: grid;
+  grid-gap: 3rem;
+  grid-template-rows: repeat(4, auto);
+  @media (min-width: $bp-mobile) {
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(2, auto);
+    @for $i from 2 through 4 {
+      div {
+        &:nth-child(#{$i}) {
+          transition-delay: 100ms * $i;
+        }
+      }
+    }
+  }
+}
+.method__box {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  text-align: left;
+  span {
+    font-size: 1.8rem;
+    font-weight: 900;
+    font-family: $font-h;
+    background-color: $color-h;
+    color: #fff;
+    padding: 0.8rem;
+    border-radius: 5px;
+  }
+}
+.method__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* Courses cards (Crusos page) */
+.courses {
+  @include component;
+}
+.courses__grid {
+  display: grid;
+  grid-gap: 3rem;
+  grid-template-rows: repeat(4, auto);
+  @media (min-width: $bp-mobile) {
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5rem;
+    align-items: flex-start;
+  }
+}
+.courses__box {
+  display: block;
+}
+.courses__box__img {
+  img {
+    width: 100%;
+    border-radius: $radius;
+  }
+  @media (min-width: $bp-mobile) {
+    height: 100%;
+  }
+}
+.courses__box__title {
+  padding: 1rem 0;
+}
+.courses__box__info {
+  padding: 1rem 0;
+  border-bottom: 1px solid #ededed;
+}
+.courses__box__price {
+  display: flex;
+  padding: 1rem 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* About me section (Sobre mi page) */
+.aboutMe {
+  @include component;
+  align-items: flex-start;
+  @media (min-width: $bp-tablet) {
+    flex-direction: row;
+  }
+}
+.aboutMe__col1 {
+  text-align: center;
+  img {
+    border-radius: $radius;
+  }
+  @media (min-width: $bp-tablet) {
+    width: 50%;
+  }
+}
+.aboutMe__col2 {
+  gap: 2rem;
+  @media (min-width: $bp-tablet) {
+    gap: 2rem;
+    width: 50%;
+  }
+}
+
+/* Form section (all pages) */
+.formSection {
+  flex-direction: column;
+  align-items: flex-start;
+  p {
+    padding: 2rem 0;
+    text-align: left;
+  }
+  label {
+    color: #fff;
+  }
+  input[type="submit"] {
+    padding: 0.8em 4rem;
+  }
+  @media (min-width: $bp-tablet) {
+    flex-direction: row;
+    gap: 3rem;
+  }
+}
+.formSection__col1 {
+  img {
+    width: 100%;
+  }
+  @media (min-width: $bp-mobile) {
+    img {
+      width: auto;
+    }
+  }
+  @media (min-width: $bp-tablet) {
+    width: 60%;
+  }
+}
+.formSection__col2 {
+  padding: 1rem 1rem;
+  @include footer-shadow(-45deg);
+  border-radius: $radius;
+  @include container-shadow();
+  div {
+    padding: 0.2rem 0;
+  }
+  @media (min-width: $bp-tablet) {
+    width: 60%;
+    padding: 2em 3rem;
+    border-radius: 8px;
+    div {
+      padding: 0.5rem 0;
+    }
+  }
+}
+.formSection__labels {
+  display: flex;
+  flex-direction: column;
+}
+.formSection__img {
+  text-align: center;
+}
