@@ -25,7 +25,7 @@ function agregarCarrito() {
       total += producto.precio // Suma la variable total que definí arriba con 0 a los precios de los productos añadidos al carrito
     }
   }
-  alert("Tus productos: " + carrito.map((prod) => prod.nombre).join(", ") + " fueron añadidos al carrito. Total: " + total) // Avisa al usuario sobre el total del carrito
+  alert("Tus productos: " + carrito.map((prod) => prod.nombre).join(", ") + " fueron añadidos al carrito. Total: " + total) // Avisa al usuario sobre el total del carrito y utiliza un map para decirle qué productos fueron añadidos (separados por un una "," con el join)
   console.log(carrito)
 }
 
