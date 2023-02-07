@@ -11,6 +11,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  gap: 1rem;
 }
 .panel {
   border: none;

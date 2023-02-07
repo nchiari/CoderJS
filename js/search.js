@@ -1,58 +1,28 @@
-// Variables que almacenarán los productos y el resultado de la búsqueda
-let productos = []
-let resultados = []
-
-// Función para agregar productos a la lista
-function agregarProducto(nombre, precio) {
-  let producto = {
-    nombre: nombre,
-    precio: precio,
-  }
-  productos.push(producto)
-}
-
-// Función para guardar los productos en el storage
-function guardarProductos() {
-  localStorage.setItem("productos", JSON.stringify(productos))
-}
-
-// Función para recuperar los productos del storage
-function recuperarProductos() {
-  productos = JSON.parse(localStorage.getItem("productos"))
-  if (!productos) {
-    productos = []
-  }
-}
-
-// Función para buscar productos en la lista
-function buscarProducto(busqueda) {
-  resultados = []
-  for (let i = 0; i < productos.length; i++) {
-    let producto = productos[i]
-    if (producto.nombre.toLowerCase().includes(busqueda.toLowerCase()) || producto.precio.toString().includes(busqueda)) {
-      resultados.push(producto)
-    }
-  }
-}
-
-// Función para mostrar los resultados de la búsqueda en el HTML
-function mostrarResultados() {
-  let contenedor = document.getElementById("resultados")
-  contenedor.innerHTML = ""
+// Crea una función para buscar productos
+function buscarProductos() {
+  let input = document.getElementById("busqueda").value // Obtiene el valor de la barra de búsqueda
+  let productos = JSON.parse(localStorage.getItem("productos")) // Obtiene los productos del local storage y los parsea a un objeto JavaScript
+  let resultados = productos.filter(function (producto) {
+    // Filtra los productos según el input del usuario
+    return producto.nombre.toLowerCase().includes(input.toLowerCase()) || producto.precio.toString().includes(input)
+  })
+  // Crea una variable para almacenar el HTML de los resultados
+  let resultadosHTML = ""
+  // Recorre los resultados y crea una fila en la tabla para cada producto
   for (let i = 0; i < resultados.length; i++) {
-    let producto = resultados[i]
-    contenedor.innerHTML += "<p>" + producto.nombre + " - $" + producto.precio + "</p>"
+    resultadosHTML += (
+      <tr>
+        {" "}
+        <td>${resultados[i].nombre}</td> <td>${resultados[i].precio}</td>{" "}
+      </tr>
+    )
   }
+  // Agrega los resultados al HTML
+  document.getElementById("resultados").innerHTML = resultadosHTML
 }
 
-// Evento para buscar productos cuando se presiona el botón
-let boton = document.getElementById("boton")
-boton.addEventListener("click", function () {
-  let input = document.getElementById("input")
-  let busqueda = input.value
-  buscarProducto(busqueda)
-  mostrarResultados()
+// Agrega un evento al botón de búsqueda para invocar la función buscarProductos
+document.getElementById("boton-busqueda").addEventListener("click", buscarProductos)
+document.getElementById("searchBtn").addEventListener("click", function () {
+  console.log("Búsqueda realizada")
 })
-
-// Recupera los productos al inicio de la página
-recuperarProductos()
